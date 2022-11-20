@@ -1,0 +1,37 @@
+module.exports = function(sequelize, DataTypes) {
+  const user_subscribers = sequelize.define('user_subscribers', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.BIGINT.UNSIGNED,
+      allowNull: false,
+      primaryKey: true
+    },
+    user_id: {
+      type: DataTypes.BIGINT,
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    },
+    subscriber_id: {
+      type: DataTypes.BIGINT,
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    },
+  }, {
+    sequelize,
+    tableName: 'user_subscribers',
+    timestamps: true,
+    underscored: true,
+  });
+  user_subscribers.associate = (models) => {
+    user_subscribers.belongsTo(models.users, { as: "user", foreignKey: "user_id"});
+    user_subscribers.belongsTo(models.users, { as: "subscriber", foreignKey: "subscriber_id"});
+
+  }
+  return user_subscribers;
+};

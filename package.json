@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migration": "npm run migrate:undo && npm run migrate",
+    "migrate": "sequelize db:migrate",
+    "migrate:undo": "sequelize db:migrate:undo:all",
+    "seeder": "npm run seed:undo && npm run seed:test",
+    "seed:test": "sequelize db:seed:all",
+    "seed:undo": "sequelize db:seed:undo:all"
   },
   "repository": {
     "type": "git",
