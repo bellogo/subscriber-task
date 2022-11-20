@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   const users = sequelize.define('users', {
     id: {
       autoIncrement: true,
-      type: DataTypes.BIGINT.UNSIGNED,
+      type: DataTypes.BIGINT,
       allowNull: false,
       primaryKey: true
     },
@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     underscored: true,
   });
   users.associate = (models) => {
-    users.hasMany(models.user_subscribers, { as: "subscribers", foreignKey: "user_id"});
+    users.belongsToMany(models.users, {through: models.user_subscribers, foreignKey: "user_id", onDelete: "cascade", as: 'subscribers' });
   }
   return users;
 };

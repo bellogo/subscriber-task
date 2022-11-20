@@ -31,3 +31,20 @@ exports.responseCode = {
     errors,
   });
 };
+
+/**
+ *
+ * @param {object} res response object
+ * @param {number} statusCode
+ * @param {string} message
+ * @param {*} data
+ * @returns {object} res
+ */
+ exports.successResponse = function (res, statusCode = this.responseCode.SUCCESS,
+  message = 'success', data = null) {
+  res.status(statusCode).json({
+    status: 'success',
+    message,
+    data,
+  });
+};

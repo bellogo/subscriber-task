@@ -1,4 +1,5 @@
 'use strict';
+//  This would seed 200 random users
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
