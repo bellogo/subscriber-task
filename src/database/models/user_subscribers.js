@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    user_id: {
+    subscriber_id: {
       type: DataTypes.BIGINT,
       allowNull: true,
       references: {
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    subscriber_id: {
+    user_id: {
       type: DataTypes.BIGINT,
       allowNull: true,
       references: {

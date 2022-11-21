@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      subscriber_id: {
         type: Sequelize.BIGINT,
         allowNull: true,
         references: {
@@ -17,7 +17,7 @@ module.exports = {
           key: 'id'
         }
       },
-      subscriber_id: {
+      user_id: {
         type: Sequelize.BIGINT,
         allowNull: true,
         references: {

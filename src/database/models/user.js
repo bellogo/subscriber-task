@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     underscored: true,
   });
   users.associate = (models) => {
-    users.belongsToMany(models.users, {through: models.user_subscribers, foreignKey: "user_id", onDelete: "cascade", as: 'subscribers' });
+    users.belongsToMany(models.users, {as: 'subscriptions', through: models.user_subscribers, foreignKey: "subscriber_id", onDelete: "cascade", otherKey: 'user_id'});
   }
   return users;
 };

@@ -48,3 +48,34 @@ exports.responseCode = {
     data,
   });
 };
+
+/**
+ * The validation rule
+ * @param req
+ * @param res
+ * @param next
+ * @param schema
+ */
+ exports.validateRequestOnly = (object, res, schema) => {
+  const FormattedError = [];
+  const options = {
+    abortEarly: false, // include all errors
+    allowUnknown: false, // ignore unknown props
+    // stripUnknown: true, // remove unknown props
+  };
+  const { error, data } = schema.validate(object, options);
+  if (error) {
+    /**
+         * loop through the error messages and return readable error message
+         */
+    error.details.forEach((e) => {
+      FormattedError.push(e.message.replace(/"/g, ''));
+    });
+
+    /**
+         * returns a single error at a time
+         */
+    return FormattedError;
+  }
+
+};
