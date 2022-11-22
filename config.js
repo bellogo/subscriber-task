@@ -7,5 +7,4 @@ module.exports = {
   dbUser: process.env.DBUSER,
   dbPassword: process.env.DBPASSWORD,
   dbHost: process.env.DBHOST,
-  dbDialect: process.env.DBDIALECT,
 };
