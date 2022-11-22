@@ -33,4 +33,27 @@ module.exports = class Validations {
     
     
   }
+
+  /**
+   * validate details on creation
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+   async validateSubscribeUser(req, res, next) {
+  
+    const schema = Joi.object({
+      subscriber_id: Joi.number().empty().required(),
+      user_id: Joi.number().empty().required()
+    });
+
+    const errors = await validateRequestOnly(req.body, res, schema);
+    if (errors) return errorResponse(res, responseCode.UNPROCESSABLE_ENTITY, 'A validation error has occurred', errors);
+
+    return next();
+  
+  
+}
 }

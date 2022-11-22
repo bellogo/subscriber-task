@@ -6,7 +6,7 @@ module.exports = {
     password: config.dbPassword,
     database: config.dbName,
     host: config.dbHost,
-    dialect: 'postgres',
+    dialect: config.dbDialect,
     logging: false,
   },
   // test: {
